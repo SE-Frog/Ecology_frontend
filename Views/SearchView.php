@@ -1,4 +1,4 @@
-<?php 
+<?php
   include 'header.php';
   require_once('../Modules/Function.php');
   if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
@@ -10,7 +10,7 @@
   <?php
     // 引入Seach.php裡面的函式
     // 將return回來的sql資料存入result中
-    $result = getFullList();
+    // $result = getFullList();
 
     // 搜尋的方式, 變數依序為 關鍵字（查詢名字、外觀、習性）、標籤、科別、屬別
     // 如果不拘則不需要傳入變數, 但若是針對後面變數進行篩選, 請在前面變數填 "%"
@@ -23,18 +23,29 @@
 
     // 判斷是否有資料回傳
 
-    if($result->num_rows === 0) {
+    // if($result->num_rows === 0) {
       // query資料為空
-      echo "Empty";
-    } else {
+      // echo "Empty";
+    // } else {
       // 逐列進行動作(顯示)
-      while($row = mysqli_fetch_array($result)) {
-        // 欄位的值 = $row['{欄位名稱}'], 參考下列範例顯示欄位 id 及 organismname
-        echo $row['id'] . " " . $row['organismname'] . "<a href='../Control/Control.php?act=deleteEcology&id=".$row['id']."'>delete</a>&nbsp;&nbsp;&nbsp;"."<a href='../Views/SearchView_edit.php?&id=".$row['id']."'>edit</a><br />";
-      }
-    }
+      // while($row = mysqli_fetch_array($result)) {
+        // 欄位的值 = $row['{欄位名稱}'], 參考下列範例顯示欄位 id 及 organismname
+        // echo $row['id'] . " " . $row['organismname'] . "<a href='../Control/Control.php?act=deleteEcology&id=".$row['id']."'>delete</a>&nbsp;&nbsp;&nbsp;"."<a href='../Views/SearchView_edit.php?&id=".$row['id']."'>edit</a><br />";
+      // }
+    // }
   ?>
 </div>
+<script>
+  allData.push(
+  <?php
+    $result = getFullList();
+    while($row = mysqli_fetch_array($result)){
+      echo $row['organismname'];
+    }
+  ?>
+  )
+  console.log(allData);
+</script>
 
 
 <?php
