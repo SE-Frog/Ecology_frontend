@@ -9,6 +9,15 @@
 ?>
 <div class = "container">
   <?php
+    // 搜尋的方式, 變數依序為 關鍵字（查詢名字、外觀、習性）、標籤、科別、屬別
+    // 如果不拘則不需要傳入變數, 但若是針對後面變數進行篩選, 請在前面變數填 "%"
+    // 例如下列範例為: 只要搜尋label(標籤)符合frog的資料, 但是前面還有一個變數"關鍵字"
+    // 故需填入"%", 而後面變數沒有使用到則無需填入
+    //$result = searchEcology("%", "frog");
+
+    // 資料太多需要分頁的話請用下方函式, 每頁顯示10筆, 並讀取第一頁
+    //$result = getPaginationList(10, 1);
+
   $keyword = $_REQUEST['keyword'];
   $label = $_REQUEST['label'];
   $family = $_REQUEST['family'];
