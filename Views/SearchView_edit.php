@@ -45,6 +45,6 @@
     <input type="submit" name="Submit" value="送出" />[<a href='../Views/SearchView.php'>返回</a>]
   </form>
 </div>
-<?php   
+<?php
   include 'footer.php';
 ?>
