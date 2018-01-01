@@ -1,56 +1,57 @@
 <?php
-  include 'header.php';
-  require_once '../Modules/Function.php';
-  if ( !isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
+include 'header.php';
+require_once '../Modules/Function.php';
+if (!isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
     header("Location: ../Views/loginForm.php");
     exit(0);
-  }
+}
 ?>
 
 <?php
-  // 引入Seach.php裡面的函式
-  // 將return回來的sql資料存入result中
-  $result = getFullList();
+// 引入Seach.php裡面的函式
+// 將return回來的sql資料存入result中
+$result = getFullList();
 
-  // 資料太多需要分頁的話請用下方函式, 每頁顯示10筆, 並讀取第一頁
-  //$result = getPaginationList(10, 1);
+// 資料太多需要分頁的話請用下方函式, 每頁顯示10筆, 並讀取第一頁
+//$result = getPaginationList(10, 1);
 
-  // 判斷是否有資料回傳
-  if($result->num_rows === 0) {
+// 判斷是否有資料回傳
+if ($result->num_rows === 0) {
     // query 資料為空
     echo "Empty";
-  } else {
+} else {
     $allData = '';
-    class Emp {
-      public $id = "";
-      public $name  = "";
-      public $label  = "";
-      public $family  = "";
-      public $genus  = "";
-      public $food  = "";
-      public $season  = "";
-      public $status  = "";
-      public $habitat  = "";
-      public $note  = "";
+    class Emp
+    {
+        public $id = "";
+        public $name = "";
+        public $label = "";
+        public $family = "";
+        public $genus = "";
+        public $food = "";
+        public $season = "";
+        public $status = "";
+        public $habitat = "";
+        public $note = "";
     }
     // 逐列進行動作(顯示)
-    while($row = mysqli_fetch_array($result)) {
-      // 內容將用 js 動態產生, 故先把所有資料包成json, 等等要丟給 js
-      $e = new Emp();
-      $e->id = $row['id'];
-      $e->name = $row['organismname'];
-      $e->label = $row['label'];
-      $e->family = $row['family'];
-      $e->genus = $row['genus'];
-      $e->food = $row['food'];
-      $e->season = $row['season'];
-      $e->status = $row['status'];
-      $e->habitat = $row['habitat'];
-      $e->note = $row['note'];
-      $tmp[] = $e;
+    while ($row = mysqli_fetch_array($result)) {
+        // 內容將用 js 動態產生, 故先把所有資料包成json, 等等要丟給 js
+        $e = new Emp();
+        $e->id = $row['id'];
+        $e->name = $row['organismname'];
+        $e->label = $row['label'];
+        $e->family = $row['family'];
+        $e->genus = $row['genus'];
+        $e->food = $row['food'];
+        $e->season = $row['season'];
+        $e->status = $row['status'];
+        $e->habitat = $row['habitat'];
+        $e->note = $row['note'];
+        $tmp[] = $e;
     }
     $allData = json_encode($tmp);
-  }
+}
 ?>
 
 <div id="content" class="container mt-3">
@@ -136,45 +137,48 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
-  var allData = JSON.parse('<?php echo $allData; ?>');
-  // console.log(allData);
-  var allClass = [];
-  // 查找並存下所有的物種(ex:蝴蝶,青蛙)
-  for(let value of allData){
-      if(value.label != null && allClass.indexOf(value.label) == -1){
-        allClass[value.label] = {
-          family: [],
-          genus: []
-        };
-      }
-  }
-  // 把所有的科存入對應的物種(ex: 蛺蝶科存入蝴蝶)
-  for(let value of allData){
-      if(value.family != null && allClass[value.label].family.indexOf(value.family) == -1){
-        // 初始化，之後要將科和屬放入其label中
-        allClass[value.label].family.push(value.family);
-      }
-  }
-  // 把所有的種存入對應的物種
-  for(let value of allData){
-      if(value.genus != null && allClass[value.label].genus.indexOf(value.genus) == -1){
-        // 初始化，之後要將科和屬放入其label中
-        allClass[value.label].genus.push(value.genus);
-      }
-  }
-  for(let key in allClass){
-    console.log(allClass[key].family);
-    console.log(allClass[key].genus);
-  }
-
   var app = new Vue({
     el: '#content',
     data: {
-      allData: allData,
-      allClass: allClass,
+      allData: '',
+      allClass: '',
       chosenClass: 'all',
       chosenFamily: 'all',
       chosenGenus: 'all',
+    },
+    created: function(){
+      var allData = JSON.parse('<?php echo $allData; ?>');
+      // console.log(allData);
+      var allClass = [];
+      // 查找並存下所有的物種(ex:蝴蝶,青蛙)
+      for(let value of allData){
+          if(value.label != null && allClass.indexOf(value.label) == -1){
+            allClass[value.label] = {
+              family: [],
+              genus: []
+            };
+          }
+      }
+      // 把所有的科存入對應的物種(ex: 蛺蝶科存入蝴蝶)
+      for(let value of allData){
+          if(value.family != null && allClass[value.label].family.indexOf(value.family) == -1){
+            // 初始化，之後要將科和屬放入其label中
+            allClass[value.label].family.push(value.family);
+          }
+      }
+      // 把所有的種存入對應的物種
+      for(let value of allData){
+          if(value.genus != null && allClass[value.label].genus.indexOf(value.genus) == -1){
+            // 初始化，之後要將科和屬放入其label中
+            allClass[value.label].genus.push(value.genus);
+          }
+      }
+      // for(let key in allClass){
+      //   console.log(allClass[key].family);
+      //   console.log(allClass[key].genus);
+      // }
+      this.allData = allData;
+      this.allClass = allClass;
     },
     methods: {
     },
@@ -240,5 +244,5 @@
 
 
 <?php
-  include 'footer.php'
+include 'footer.php'
 ?>

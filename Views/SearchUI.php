@@ -12,6 +12,7 @@
 </head>
 <body>
   <div class="container mt-3">
+    <h1 class="mb-3">查詢資料</h1>
     <form action="SearchResult.php" method="post">
       <div class="form-group row">
         <label for="keyword" class="col-md-2 col-form-label">關鍵字</label>
