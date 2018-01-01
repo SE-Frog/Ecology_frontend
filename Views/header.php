@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="../Views/index.php">
     <img src="../img/frog.png" alt="forg_icon" width="32px">
   </a>

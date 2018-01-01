@@ -74,7 +74,7 @@ if ($result->num_rows === 0) {
       <div class="form-group">
         <label for="organismname" class="col-12 col-form-label">物種</label>
         <div class="col-12">
-          <select class="form-control" id="organismname" v-model="chosenClass">
+          <select @change="chosenFamily='all';chosenGenus='all'" class="form-control" id="organismname" v-model="chosenClass">
             <option value="all" selected>所有</option>
             <option v-for="item in allLabel" :value="item">{{ item }}</option>
           </select>
