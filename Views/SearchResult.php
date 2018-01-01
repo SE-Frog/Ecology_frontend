@@ -52,24 +52,6 @@ while ($row = mysqli_fetch_array($results)) {
         </div>';
 }
 echo "</div>"
-// echo '<table class="table"><tr>';
-// $results=searchEcology($keyword,$label,$family,$genus);
-// $count = 0;
-// foreach ($results as $key => $section) {
-//   if($count == 0) {
-//     foreach ($section as $name => $val) {
-//       echo "<td>$name</td>";
-//       $count ++;
-//     }
-//   } else if ($count > 0) {
-//     echo "</tr><tr>";
-//     foreach ($section as $name => $val) {
-//       echo "<td>$val</td>";
-//     }
-//   }
-//   echo "</tr>";
-// }
-// echo '</table>';
 ?>
 </div>
 <?php
