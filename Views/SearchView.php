@@ -119,7 +119,7 @@ if ($result->num_rows === 0) {
             <p class="mt-2">{{ list.status }}</p>
             <div class="text-right">
                 <a :href="'../Views/SearchView_edit.php?&id=' + list.id" class="btn btn-secondary">修改</a>
-                <a :href="'../Control/Control.php?act=deleteEcology&id=' + list.id" class="btn btn-danger">刪除</a>
+                <a @click="checkDel(list.id)" href="#" class="btn btn-danger">刪除</a>
                 <a href="#" class="btn btn-primary">看更多...</a>
             </div>
         </div>
@@ -181,6 +181,12 @@ if ($result->num_rows === 0) {
       this.allClass = allClass;
     },
     methods: {
+      checkDel(id) {
+        var str = '../Control/Control.php?act=deleteEcology&id=' + id;
+        if(confirm('確定要刪除嗎?')){
+          window.location.href = str;
+        }
+      }
     },
     computed: {
       allLabel () {

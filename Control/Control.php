@@ -19,8 +19,9 @@
             $id = (int) $_REQUEST['id'];
             if ($id > 0) {
                 // 做完登入頁面後記得檢查uID
-            // if($id == $_SESSION['uID']){
+                // if($id == $_SESSION['uID']){
                 deleteEcology($id);
+                header('Location: ../Views/SearchView.php');
             }
             break;
         case 'updateEcology':
