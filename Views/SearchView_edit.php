@@ -28,25 +28,78 @@
   }
 ?>
 
-<div class="container">
-  <b>Edit ecology of&nbsp;<?php echo $edit_id;?></b>
-  <hr/>
-  <form method="post" action="../Control/Control.php?act=updateEcology">
-    <b>ID:</b><?php echo $edit_id;?><br/>
-    <b>生物名稱:</b><input type="text" name="organismname" id="organismname" value="<?php echo $Organ;?>"/><br/>
-    <b>物種:</b><input type="text" name="label" id="label" value="<?php echo $Label;?>"/><br/>
-    <b>科:</b><input type="text" name="family" id="family" value="<?php echo $Family;?>"/><br/>
-    <b>屬:</b><input type="text" name="genus" id="genus" value="<?php echo $Genus;?>"/><br/>
-    <b>食物:</b><input type="text" name="food" id="food" value="<?php echo $Food;?>"/><br/>
-    <b>季節:</b><input type="text" name="season" id="season" value="<?php echo $Season;?>"/><br/>
-    <b>外觀:</b>
-    <textarea name="status" type="text" id="status" cols="50" rows="5" style="vertical-align:top"><?php echo $Status;?></textarea><br/>
-    <b>習性:</b>
-    <textarea name="habitat" type="text" id="habitat" cols="50" rows="5" style="vertical-align:top"><?php echo $Habitat;?></textarea><br/>
-    <b>註記:</b><input type="text" name="note" id="note" value="<?php echo $Note;?>"/><br/>
-    <input type="submit" name="Submit" value="送出" />[<a href='../Views/SearchView.php'>返回</a>]
-  </form>
-</div>
+<head>
+  <meta charset="UTF-8" />
+  <title>修改資料</title>
+</head>
+<body>
+  <div class="container mt-3">
+    <h2 class="mb-3">Edit ecology of&nbsp;<?php echo $edit_id;?></h1>
+    <form method="post" action="../Control/Control.php?act=updateEcology">
+      <input type="hidden" name='dataid' name='dataid' value="<?php echo $edit_id;?>">
+      <div class="form-group row">
+        <label for="organismname" class="col-md-2 col-form-label">生物名稱</label>
+        <div class="col-md-10">
+          <input type="text" name="organismname" class="form-control" id="organismname" value="<?php echo $Organ;?>"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="label" class="col-md-2 col-form-label">物種</label>
+        <div class="col-md-10">
+          <input type="text" name="label" class="form-control" id="label" value="<?php echo $Label;?>"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="family" class="col-md-2 col-form-label">科</label>
+        <div class="col-md-10">
+          <input type="text" name="family" class="form-control" id="family" value="<?php echo $Family;?>"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="genus" class="col-md-2 col-form-label">屬</label>
+        <div class="col-md-10">
+          <input type="text" name="genus" class="form-control" id="genus" value="<?php echo $Genus;?>"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="food" class="col-md-2 col-form-label">食物</label>
+        <div class="col-md-10">
+          <input type="text" name="food" class="form-control" id="food" value="<?php echo $Food;?>"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="season" class="col-md-2 col-form-label">季節</label>
+        <div class="col-md-10">
+          <input type="text" name="season" class="form-control" id="season" value="<?php echo $Season;?>"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="status" class="col-md-2 col-form-label">外觀</label>
+        <div class="col-md-10">
+          <textarea name="status" class="form-control" rows="3" id="status"><?php echo $Status;?></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="habitat" class="col-md-2 col-form-label">習性</label>
+        <div class="col-md-10">
+          <textarea name="habitat" class="form-control" rows="3" id="habitat"><?php echo $Habitat;?></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="note" class="col-md-2 col-form-label">註記</label>
+        <div class="col-md-10">
+          <input type="text" name="note" class="form-control" id="note" value="<?php echo $Note;?>"/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-12">
+          <input type="submit" name="Submit" class="btn btn-primary" value="送出" />
+          <input type="button" value="返回" class="btn btn-primary" onclick="location.href='../Views/SearchView.php'">
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
 <?php
   include 'footer.php';
 ?>
