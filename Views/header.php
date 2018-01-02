@@ -50,25 +50,25 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="../Views/userinfo.php">使用者清單</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="../Views/SearchView.php">查看資料庫</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../Views/SearchUI.php">查詢清單</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../Views/userinfo.php">使用者管理</a>
       </li>
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href='loginForm.php'>
           <?php
-          session_start();
-          if (isset($_SESSION['uID']) && $_SESSION['uID'] == true) {
-            echo "登出";
-          } else {
-            echo "登錄";
-          }
+            session_start();
+            if (isset($_SESSION['uID']) && $_SESSION['uID'] === true) {
+              echo "登出";
+            } else {
+              echo "登錄";
+            }
           ?>
         </a>
       </li>
