@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>青蛙阿婆之家</title>
+<style>
+.myclass {
+  background-image   : url(frogs.png),
+                       url(house.jpg);
+                       
+  background-repeat  : no-repeat,
+                       no-repeat;
+
+  background-size: cover,
+                   cover; 
+}
+form {position absolute; width:400px;}
+.form-group{margin: 50px auto;text-align:center}
+</style>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<body class="myclass"> 
+<div style="position:relative; left:35vw; top:10vw;">
+<form  class="rounded" style="background-color:rgba(0,0,0,0.3);">
+  <div class="form-group">
+    <span style="color:white;font-weight:bold;">UserName</span>
+    <input type="text" class="form-control" id="exampleInputUserName" placeholder="Enter UserName">
+  </div>
+  <div class="form-group">
+    <span style="color:white;font-weight:bold;">Password</span>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1" style="color:white;font-weight:bold;">Remember me</label>
+  </div>
+  <button type="button" class="btn btn-success" value="登入" >Login</button>
+
+</form>
+</div>
+</div>
+</body>
+</html>
