@@ -34,7 +34,7 @@
 </head>
 <body>
   <div class="container mt-3">
-    <h2 class="mb-3">Edit ecology of&nbsp;<?php echo $edit_id;?></h1>
+    <h2 class="mb-3">Edit Ecology Of&nbsp;#<?php echo $edit_id;?></h2>
     <form method="post" action="../Control/Control.php?act=updateEcology">
       <input type="hidden" name='dataid' name='dataid' value="<?php echo $edit_id;?>">
       <div class="form-group row">
