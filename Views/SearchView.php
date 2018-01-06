@@ -53,7 +53,15 @@ if ($result->num_rows === 0) {
     $allData = json_encode($tmp);
 }
 ?>
-
+<div id="loading" style="
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+"></div>
 <div id="content" class="container mt-3">
   <h1>物種生態資料</h1>
   <div class="row">
@@ -74,7 +82,7 @@ if ($result->num_rows === 0) {
       <div class="form-group">
         <label for="organismname" class="col-12 col-form-label">物種</label>
         <div class="col-12">
-          <select @change="chosenFamily='all';chosenGenus='all'" class="form-control" id="organismname" v-model="chosenClass">
+          <select @change="chosenFamily='all';chosenGenus='all';dataIndex=1" class="form-control" id="organismname" v-model="chosenClass">
             <option value="all" selected>所有</option>
             <option v-for="item in allLabel" :value="item">{{ item }}</option>
           </select>
@@ -85,7 +93,7 @@ if ($result->num_rows === 0) {
       <div class="form-group">
         <label for="family" class="col-12 col-form-label">科</label>
         <div class="col-12">
-          <select class="form-control" id="family" v-model="chosenFamily">
+          <select @change="dataIndex=1" class="form-control" id="family" v-model="chosenFamily">
             <option value="all" selected>所有</option>
             <option v-for="item in allFamily" :value="item">{{ item }}</option>
           </select>
@@ -96,7 +104,7 @@ if ($result->num_rows === 0) {
       <div class="form-group">
         <label for="genus" class="col-12 col-form-label">屬</label>
         <div class="col-12">
-          <select class="form-control" id="genus" v-model="chosenGenus">
+          <select @change="dataIndex=1" class="form-control" id="genus" v-model="chosenGenus">
             <option value="all" selected>所有</option>
             <option v-for="item in allGenus" :value="item">{{ item }}</option>
           </select>
@@ -131,6 +139,26 @@ if ($result->num_rows === 0) {
             沒有找到您指定的物種喔
         </div>
     </div>
+
+    <div class="col-12 text-center mb-3" v-if="myData.length != 0">
+      <a href="#" class="btn btn-light" @click="dataIndex=dataIndex+1" v-if="dataIndex==1 && (!checkEnd())">下一頁</a>
+      <tmplate v-else-if="dataIndex>1">
+        <a href="#" class="btn btn-light" @click="dataIndex=dataIndex-1">上一頁</a href="#">
+        <span class="text-white bg-info" style="
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        ">第 {{ dataIndex }} 頁</span>
+        <a href="#" class="btn btn-light" @click="dataIndex=dataIndex+1" v-if="(!checkEnd())">下一頁</a>
+      </tmplate>
+    </div>
   </div>
 </div>
 
@@ -145,9 +173,11 @@ if ($result->num_rows === 0) {
       chosenClass: 'all',
       chosenFamily: 'all',
       chosenGenus: 'all',
+      // 分頁索引
+      dataIndex: 1
     },
     created: function(){
-      var allData = JSON.parse('<?php echo $allData; ?>');
+      var allData = <?php echo $allData; ?>;
       // console.log(allData);
       var allClass = [];
       // 查找並存下所有的物種(ex:蝴蝶,青蛙)
@@ -179,12 +209,24 @@ if ($result->num_rows === 0) {
       // }
       this.allData = allData;
       this.allClass = allClass;
+      document.getElementById("loading").style.display = "none";
     },
     methods: {
       checkDel(id) {
         var str = '../Control/Control.php?act=deleteEcology&id=' + id;
         if(confirm('確定要刪除嗎?')){
           window.location.href = str;
+        }
+      },
+      checkEnd() {
+        // 查看下一頁是否已經到最後一頁
+        let tmp = this.dataIndex + 1;
+        let tmpp = this.filterData.slice((tmp * 10) - 10, tmp * 10);
+        console.log(tmpp.length);
+        if(tmpp.length == 0){
+          return true;
+        }else{
+          return false;
         }
       }
     },
@@ -214,7 +256,7 @@ if ($result->num_rows === 0) {
         }
         return tmp;
       },
-      myData () {
+      filterData () {
         let tmp = [];
         // 先過濾物種
         if(this.chosenClass == "all"){
@@ -243,6 +285,9 @@ if ($result->num_rows === 0) {
             return val.family == this.chosenFamily && val.genus == this.chosenGenus;
           });
         }
+      },
+      myData () {
+        return this.filterData.slice((this.dataIndex * 10) - 10, this.dataIndex * 10);
       }
     }
   })

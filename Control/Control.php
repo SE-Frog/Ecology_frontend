@@ -5,13 +5,15 @@
 
     switch ($action) {
         case 'searchEcology':
-            searchEcology($_REQUEST['keyword'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus']);
+            // addslashes 防SQL注入
+            searchEcology(addslashes($_REQUEST['keyword']), addslashes($_REQUEST['label']), addslashes($_REQUEST['family']), addslashes($_REQUEST['genus']));
             header('Location: ../Views/Result.php');
             break;
         case 'createEcology':
             //檢查是否存在且有值
             if(isset($_REQUEST['organismname']) && !empty($_REQUEST['organismname'])) {
-                createEcology($_REQUEST['organismname'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus'], $_REQUEST['food'], $_REQUEST['season'], $_REQUEST['status'], $_REQUEST['habitat'], $_REQUEST['note']);
+                // htmlspecialchars 防XSS
+                createEcology(htmlspecialchars($_REQUEST['organismname']), htmlspecialchars($_REQUEST['label']), htmlspecialchars($_REQUEST['family']), htmlspecialchars($_REQUEST['genus']), htmlspecialchars($_REQUEST['food']), htmlspecialchars($_REQUEST['season']), htmlspecialchars($_REQUEST['status']), htmlspecialchars($_REQUEST['habitat']), htmlspecialchars($_REQUEST['note']));
             } else {
                 break;
             }
@@ -27,7 +29,8 @@
         case 'updateEcology':
             $id = (int) $_REQUEST['dataid'];
             if ($id > 0) {
-                updateEcology($id,$_REQUEST['organismname'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus'], $_REQUEST['food'], $_REQUEST['season'], $_REQUEST['status'], $_REQUEST['habitat'], $_REQUEST['note']);
+                // htmlspecialchars 防XSS
+                updateEcology($id, htmlspecialchars($_REQUEST['organismname']), htmlspecialchars($_REQUEST['label']), htmlspecialchars($_REQUEST['family']), htmlspecialchars($_REQUEST['genus']), htmlspecialchars($_REQUEST['food']), htmlspecialchars($_REQUEST['season']), htmlspecialchars($_REQUEST['status']), htmlspecialchars($_REQUEST['habitat']), htmlspecialchars($_REQUEST['note']));
                 header('Location: ../Views/SearchView.php');
             }
             break;
