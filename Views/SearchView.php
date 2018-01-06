@@ -125,7 +125,7 @@ if ($result->num_rows === 0) {
             <span class="badge badge-secondary" v-if="list.family != null"><small>{{ list.family }}</small></span>
             <span class="badge badge-secondary" v-if="list.genus != null"><small>{{ list.genus }}</small></span>
             <p class="mt-2">{{ list.status }}</p>
-            <div class="text-right">
+            <div class="text-left text-md-right">
                 <a :href="'../Views/SearchView_edit.php?id=' + list.id" class="btn btn-secondary">修改</a>
                 <a @click="checkDel(list.id)" href="#" class="btn btn-danger">刪除</a>
                 <a :href="'../Views/viewDetail.php?id=' + list.id" class="btn btn-primary">看更多...</a>

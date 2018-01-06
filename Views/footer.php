@@ -1,6 +1,6 @@
 <ul class="share">
   <!-- 讓 fontawsone先預載 -->
-  <i class="fa fa-arrow-up text-white"></i>
+  <i class="fa fa-arrow-up text-white" style="opacity: 0"></i>
   <li class="Gotop">
     <a class="rfa" title="到上面" style="width: 60px; height: 60px; line-height: 60px; font-size: 40px;">
       <i class="fa fa-arrow-up text-white"></i>

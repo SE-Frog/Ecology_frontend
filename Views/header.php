@@ -11,12 +11,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <style>
     .share {
-      margin: auto;
       position: fixed;
-      bottom: 10px;
+      bottom: 45px;
       right: 10px;
       z-index: 9999;
       list-style: none;
+      padding: 0 !important;
     }
     .Gotop {
       cursor: pointer;
@@ -32,7 +32,7 @@
       display: inline-block;
       text-align: center !important;
       text-decoration: none !important;
-      margin: 5px 2px !important;
+      /* margin: 5px 2px !important; */
       border-radius: 50% !important;
       background: #0077ff;
     }
