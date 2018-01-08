@@ -1,14 +1,12 @@
-## Backend of ecology management system
+## Frontend of ecology management system
 
 ### Installation
 
 ```
+    整合後端 https://github.com/SE-Frog/Ecology_backend
+    後端若有更新請下載後放入
+    如何下載?
     請點右邊綠色 Clone or Download 並下載為zip使用
-    前端開發請下載後另外git至前端repo (避免多組共用程式碼污染)
-```
-
-```
-開發基於 https://github.com/TMineCola/bookPrj
 ```
 
 ### 前端
