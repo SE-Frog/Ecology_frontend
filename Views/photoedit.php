@@ -21,45 +21,58 @@
     exit(0);
   }
 ?>
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
 <div class="container">
 <?php
-  echo "<div class=\"row\">";
-  echo "<div id=\"wrapper\">";
-  echo " <div id=image>";
-  echo " <div id=backder>";
-  echo " <a href=".$rs['path']." target='_blank'><img src=\"".$rs['path']."\" id=\"img\" exif=\"true\" width=".(500)." height=".(500);
+  echo "<div class=\"row mt-3\" id=\"wrapper\">";
+  echo "<div class=\"col-12 text-center\">";
+  echo " <div id=\"image\">";
+  echo " <div id=\"backder\">";
+  echo " <a href=".$rs['path']." target='_blank'><img class=\"img-fluid\" src=\"".$rs['path']."\" id=\"img\" exif=\"true\" width=".(300);
   echo " title=\"信息:\r文件名:".$rs['name']."\r上傳時間:".$rs['createtime']."\" border='0'></a>";
   echo " </div>";
   echo " </div>";
-  echo " <div id=imageMeta>";
-  echo " <div class=exif-data>";
-  echo "<form method=\"post\" action=\"../Control/photoControl.php\">";
+  echo " </div>";
+  echo "<div class=\"col-12\">";
+  echo " <div id=\"imageMeta\">";
+  echo " <div class=\"exif-data\">";
+  echo "<form class=\"mb-3\" method=\"post\" action=\"../Control/photoControl.php\">";
   echo "<input type=\"hidden\" name=\"act\" value=\"updatePhoto\">";
 ?>
-    <b>圖片編號:</b><input type="text" name='photoid' id='photoid' value="<?php echo $photoid;?>"/><br>
-    <b>圖片檔案名稱: </b><input name="directory" type="text" id="directory" value="<?php echo $directory;?>" readonly='readonly'/> <br>
-    <b>圖片名稱: </b><input name="name" type="text" id="name" value="<?php echo $name;?>" readonly='readonly'/> <br>
-    <b>圖片路徑: </b><input name="path" type="text" id="path" value="<?php echo $path;?>" readonly='readonly'/> <br>
-    <b>經度: </b><input name="longitude" type="text" id="longitude" value="<?php echo $longitude;?>" /> <br>
-    <b>緯度: </b><input name="latitude" type="text" id="latitude" value="<?php echo $latitude;?>" /> <br>
-    <b>拍攝日期: </b><input name="shootdatetime" type="text" id="shootdatetime" value="<?php echo $shootdatetime;?>" /> <br>
-    <b>更改圖片？</b><input name="overwrite" value="1" id="overwrite" class="checkbox_check" type="checkbox" />
-    <b id="overwrite1"></b>
-    <input type="submit" name="Submit" value="送出" />[<a href='../Views/photoview.php'>返回</a>]
+    [<a href='../Views/photoview.php' class="mb-2">返回</a>]
+    <br>
+    <!-- <b>圖片編號:</b><input class="form-control" type="text" name='photoid' id='photoid' value="<?php echo $photoid;?>"/><br> -->
+    <!-- <b>圖片名稱: </b><input class="form-control mb-2" name="name" type="text" id="name" value="<?php echo $name;?>" readonly='readonly'/>
+    <b>圖片路徑: </b><input class="form-control mb-2" name="path" type="text" id="path" value="<?php echo $path;?>" readonly='readonly'/> -->
+    <input class="form-control" type="hidden" name='photoid' id='photoid' value="<?php echo $photoid;?>"/><br>
+    <input class="form-control mb-2" name="name" type="hidden" id="name" value="<?php echo $name;?>" readonly='readonly'/>
+    <input class="form-control mb-2" name="path" type="hidden" id="path" value="<?php echo $path;?>" readonly='readonly'/>
+    <b>物種: </b><input class="form-control mb-2" name="directory" type="text" id="directory" value="<?php echo $directory;?>" readonly='readonly'/>
+    <b>經度: </b><input class="form-control mb-2" name="longitude" type="text" id="longitude" value="<?php echo $longitude;?>" />
+    <b>緯度: </b><input class="form-control mb-2" name="latitude" type="text" id="latitude" value="<?php echo $latitude;?>" />
+    <b>拍攝日期: </b><input class="form-control mb-2" name="shootdatetime" type="text" id="shootdatetime" value="<?php echo $shootdatetime;?>" />
+    <div class="mb-2">
+      <b>
+        <label>更改圖片？
+          <input class="checkbox_check" name="overwrite" value="1" id="overwrite" type="checkbox" />
+        </label>
+      </b>
+      <b id="overwrite1"></b>
+    </div>
+    <input type="submit" name="Submit" value="送出" />
 <?php
   echo "</form>";
   echo " </div>";
-  echo " <br>";
   echo " </div>";
-  echo "</div>";
+  echo " </div>";
   echo "</div>";
 ?>
 </div>
-<?php   
+
+<?php
   include 'footer.php';
 ?>
+
 <script type="text/javascript">
 // console.log('1');
 $(document).ready(function () {
