@@ -54,7 +54,10 @@ if ($result->num_rows === 0) {
 }
 ?>
 <div id="loading" style="
+  background-image: url(../img/loading.svg);
+  background-repeat: no-repeat;
   background-color: white;
+  background-position: center;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -64,19 +67,6 @@ if ($result->num_rows === 0) {
 "></div>
 <div id="content" class="container mt-3">
   <h1>物種生態資料</h1>
-  <div class="row">
-    <div class="col-12">
-      <!-- <nav aria-label="breadcrumb" role="navigation">
-          <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                  <a href="#" @click.prevent="showAll">全部</a>
-              </li>
-              <li v-if="chosenClass!=0" class="breadcrumb-item active" aria-current="page">{{ classNumToText(chosenClass) }}</li>
-          </ol>
-      </nav> -->
-    </div>
-  </div>
-
   <div class="row">
     <div class="col-md-4">
       <div class="form-group">
