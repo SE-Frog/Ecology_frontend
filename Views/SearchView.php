@@ -212,7 +212,7 @@ if ($result->num_rows === 0) {
         // 查看下一頁是否已經到最後一頁
         let tmp = this.dataIndex + 1;
         let tmpp = this.filterData.slice((tmp * 10) - 10, tmp * 10);
-        console.log(tmpp.length);
+        // console.log(tmpp.length);
         if(tmpp.length == 0){
           return true;
         }else{
