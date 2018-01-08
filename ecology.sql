@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-01-09 05:17:04
+-- 產生時間： 2018-01-09 05:40:56
 -- 伺服器版本: 10.1.16-MariaDB
 -- PHP 版本： 5.6.24
 
@@ -3321,10 +3321,17 @@ CREATE TABLE `photo` (
 --
 
 INSERT INTO `photo` (`id`, `directory`, `path`, `name`, `longitude`, `latitude`, `altitude`, `shootdatetime`, `createtime`) VALUES
-(9, 'test', '../Public/test/0.PNG', '0.PNG', '123', '', NULL, '1970-01-01 08:00:00', '2018-01-08 16:12:05'),
+(9, 'test', '../Public/test/1.PNG', '0.PNG', '123', '', NULL, '1970-01-01 08:00:00', '2018-01-08 16:12:05'),
 (10, 'kkk', '../Public/kkk/1.PNG', '1.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-08 16:20:20'),
 (11, 'fff', '../Public/fff/3.PNG', '3.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-08 16:20:52'),
-(13, 'test', '../Public/test/0.PNG', '0.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-09 04:16:14');
+(13, 'test', '../Public/test/0.PNG', '0.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-09 04:16:14'),
+(14, 'test', '../Public/test/2.PNG', '2.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-09 04:16:14'),
+(15, 'test', '../Public/test/3.PNG', '3.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-09 04:16:14'),
+(16, 'test', '../Public/test/4.PNG', '4.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-09 04:16:14'),
+(17, 'test', '../Public/test/5.PNG', '5.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-09 04:16:14'),
+(18, 'test', '../Public/test/6.PNG', '6.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-09 04:16:14'),
+(19, 'test', '../Public/test/7.PNG', '7.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-09 04:16:14'),
+(20, 'test', '../Public/test/8.PNG', '8.PNG', '', '', NULL, '1970-01-01 08:00:00', '2018-01-09 04:16:14');
 
 -- --------------------------------------------------------
 
@@ -3381,7 +3388,7 @@ ALTER TABLE `library`
 -- 使用資料表 AUTO_INCREMENT `photo`
 --
 ALTER TABLE `photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- 使用資料表 AUTO_INCREMENT `userinfo`
 --

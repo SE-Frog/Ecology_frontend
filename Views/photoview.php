@@ -78,11 +78,11 @@
 							<div class="card-text">緯度: {{ list.latitude }}</div>
 							<div class="card-text">拍攝日期: {{ list.shootdatetime }}</div>
 							<div class="text-left text-md-right mt-1">
-									<a :href="'photoedit.php?id=' + list.id" class="btn btn-secondary">修改</a>
+									<a :href="'photoedit.php?id=' + list.id" class="btn btn-primary">修改</a>
 							</div>
 					</div>
 				</div>
-				<button @click="changeStatus(list.id)" class="btn btn-primary" type="button" data-toggle="collapse" :data-target="'#' + list.id" aria-expanded="false">
+				<button @click="changeStatus(list.id)" class="btn btn-dark btn-sm" type="button" data-toggle="collapse" :data-target="'#' + list.id" aria-expanded="false">
 					{{ status[list.id]? "打開":"收合" }}
 				</button>
       </div>
