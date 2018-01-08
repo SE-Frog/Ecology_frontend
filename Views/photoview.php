@@ -117,7 +117,7 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="../js/vue.js"></script>
 <script>
   var app = new Vue({
     el: '#content',
