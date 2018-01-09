@@ -9,7 +9,7 @@ require("dbconnect.php");
       //基本安全處理
       $username=mysqli_real_escape_string($conn, $username);
       $password=mysqli_real_escape_string($conn, $password);
-      
+
       //Generate SQL
       $sql = "INSERT INTO `userinfo` (`username`, `password`) VALUES ('$username', '$password');";
       return mysqli_query($conn, $sql); //執行SQL
@@ -46,7 +46,7 @@ require("dbconnect.php");
     $username=mysqli_real_escape_string($conn, $username);
     $password=mysqli_real_escape_string($conn, $password);
     $id = (int)$id;
-    
+
     if ($username and $id) { //if title is not empty
       $sql = "UPDATE `userinfo` SET `username`='$username',`password`='$password' WHERE `id`=$id;";
       // 執行SQL
@@ -63,6 +63,5 @@ require("dbconnect.php");
     $sql = "DELETE FROM `userinfo` WHERE id=$id;";
     return mysqli_query($conn, $sql); //執行SQL
   }
-  
 }
 ?>

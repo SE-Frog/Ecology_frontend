@@ -48,7 +48,7 @@
     <b>經度: </b><input class="form-control mb-2" name="longitude" type="text" id="longitude" value="<?php echo $longitude;?>" />
     <b>緯度: </b><input class="form-control mb-2" name="latitude" type="text" id="latitude" value="<?php echo $latitude;?>" />
     <b>拍攝日期: </b><input class="form-control mb-2" name="shootdatetime" type="text" id="shootdatetime" value="<?php echo $shootdatetime;?>" />
-    <input type="submit" name="Submit" value="送出" />
+    <input class="btn btn-primary" type="submit" value="送出" />
 <?php
   echo "</form>";
   echo " </div>";

@@ -53,6 +53,7 @@ if ($result->num_rows === 0) {
     $allData = json_encode($tmp);
 }
 ?>
+<title>物種資料</title>
 <div id="loading" style="
   background-image: url(../img/loading.svg);
   background-repeat: no-repeat;

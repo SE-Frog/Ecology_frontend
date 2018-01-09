@@ -5,7 +5,7 @@
     exit(0);
   }
 ?>
-	<title>EXIF 信息</title>
+	<title>瀏覽圖庫</title>
   <div class="container">
 <?php
   require('../Modules/photoFunction.php');

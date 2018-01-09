@@ -6,11 +6,12 @@
   }
   require("../Modules/userModel.php");
 ?>
+<title>使用者管理</title>
 <div class = "container">
   <?php
     $results=getUserList();
     while (	$rs=mysqli_fetch_array($results)) {
-      echo 
+      echo
       "<br/><b>id:</b>",$rs['id'],
       "<br/><b>name:</b>",$rs['username'],
       "<br/><b>password:</b>",$rs['password'],
