@@ -58,11 +58,17 @@
         <a class="nav-link" href="../Views/SearchUI.php">查詢清單</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="../Views/SearchView_add.php">新增資料</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="../Views/userinfo.php">使用者管理</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../Views/photoupload.php">上傳圖片</a>
+        <a class="nav-link" href="../Views/new_upload_example.php">上傳圖片</a>
       </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="../Views/photoupload.php">上傳圖片</a>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="../Views/photoview.php">瀏覽圖庫</a>
       </li>

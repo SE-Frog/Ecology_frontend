@@ -12,8 +12,9 @@
         case 'createEcology':
             //檢查是否存在且有值
             if(isset($_REQUEST['organismname']) && !empty($_REQUEST['organismname'])) {
-                // htmlspecialchars 防XSS
-                createEcology(htmlspecialchars($_REQUEST['organismname']), htmlspecialchars($_REQUEST['label']), htmlspecialchars($_REQUEST['family']), htmlspecialchars($_REQUEST['genus']), htmlspecialchars($_REQUEST['food']), htmlspecialchars($_REQUEST['season']), htmlspecialchars($_REQUEST['status']), htmlspecialchars($_REQUEST['habitat']), htmlspecialchars($_REQUEST['note']));
+                createEcology($_REQUEST['organismname'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus'], $_REQUEST['food'], $_REQUEST['season'], $_REQUEST['status'], $_REQUEST['habitat'], $_REQUEST['note']);
+                header('Location: ../Views/SearchView.php');
+                break;
             } else {
                 break;
             }
@@ -21,18 +22,17 @@
             $id = (int) $_REQUEST['id'];
             if ($id > 0) {
                 // 做完登入頁面後記得檢查uID
-                // if($id == $_SESSION['uID']){
+            // if($id == $_SESSION['uID']){
                 deleteEcology($id);
-                header('Location: ../Views/SearchView.php');
             }
+            header('Location: ../Views/SearchView.php');
             break;
         case 'updateEcology':
             $id = (int) $_REQUEST['dataid'];
             if ($id > 0) {
-                // htmlspecialchars 防XSS
-                updateEcology($id, htmlspecialchars($_REQUEST['organismname']), htmlspecialchars($_REQUEST['label']), htmlspecialchars($_REQUEST['family']), htmlspecialchars($_REQUEST['genus']), htmlspecialchars($_REQUEST['food']), htmlspecialchars($_REQUEST['season']), htmlspecialchars($_REQUEST['status']), htmlspecialchars($_REQUEST['habitat']), htmlspecialchars($_REQUEST['note']));
-                header('Location: ../Views/SearchView.php');
+                updateEcology($id,$_REQUEST['organismname'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus'], $_REQUEST['food'], $_REQUEST['season'], $_REQUEST['status'], $_REQUEST['habitat'], $_REQUEST['note']);
             }
+            header('Location: ../Views/SearchView.php');
             break;
     }
 ?>

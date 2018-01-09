@@ -3,6 +3,14 @@
     require_once('dbConnect.php');
 
 /* READ */
+    function getPhotoExif() {
+      // 宣告使用conn全域變數
+      global $conn;
+      // 選取photo資料表中所有資料
+      $sql = "SELECT * FROM `photo`";
+
+      return mysqli_query($conn, $sql);
+    }
     /* 獲取全部生態資料庫資訊 */
     function getFullList() {
         // 宣告使用conn全域變數
@@ -13,6 +21,16 @@
         return mysqli_query($conn, $sql);
     }
 
+    /* 獲取全部生態資料庫資訊 */
+    function getFullListByLabel($label) {
+      // 宣告使用conn全域變數
+      global $conn;
+      // 選取library資料表中所有資料對應label的
+      $sql = "SELECT * FROM `library` WHERE `label` = '$label'";
+
+      return mysqli_query($conn, $sql);
+    }
+
     /* 獲得指定編號生態資料 */
     function getListID($id) {
         // 宣告使用conn全域變數
@@ -20,7 +38,7 @@
         // 針對id做基本檢誤
         $id = (int)$id;
         // 選取library資料表中所有資料
-        $sql = "SELECT * FROM `library` WHERE id = $id";
+        $sql = "SELECT * FROM `library` WHERE `id` = $id";
 
         return mysqli_query($conn, $sql);
     }
@@ -88,7 +106,7 @@
             $Genus = "%" . mysqli_real_escape_string($conn, $Genus) . "%";
         }
         // 選取並用屬別進行分群
-        $sql = "SELECT * FROM `library` WHERE `label` LIKE '$Label' AND `family` LIKE '$Family' AND  (`genus` LIKE '$Genus' OR `genus` IS NULL) AND (`organismname` LIKE '$Keyword' OR `food` LIKE '$Keyword' OR `season` LIKE '$Keyword' OR `status` LIKE '$Keyword' OR `habitat` LIKE '$Keyword')";
+        $sql = "SELECT * FROM `library` WHERE `label` LIKE '$Label' AND `family` LIKE '$Family' AND  (`genus` LIKE '$Genus' OR `genus` IS NULL) AND ((`organismname` LIKE '$Keyword' OR `organismname` IS NULL) AND ((`food` LIKE '$Keyword' OR `food` IS NULL) OR (`season` LIKE '$Keyword' OR `season` IS NULL) OR (`status` LIKE '$Keyword' OR `status` IS NULL) OR (`habitat` LIKE '$Keyword' OR `habitat` IS NULL)))";
 
         return mysqli_query($conn, $sql);
     }
@@ -103,15 +121,15 @@
             return false;
         } else {
             // 過濾字串
-            $Organ = mysqli_real_escape_string($conn, $Organ);
-            $Label = mysqli_real_escape_string($conn, $Label);
-            $Family = mysqli_real_escape_string($conn, $Family);
-            $Genus = mysqli_real_escape_string($conn, $Genus);
-            $Food = mysqli_real_escape_string($conn, $Food);
-            $Season = mysqli_real_escape_string($conn, $Season);
-            $Status = mysqli_real_escape_string($conn, $Status);
-            $Habitat = mysqli_real_escape_string($conn, $Habitat);
-            $Note = mysqli_real_escape_string($conn, $Note);
+            $Organ = htmlspecialchars(mysqli_real_escape_string($conn, $Organ));
+            $Label = htmlspecialchars(mysqli_real_escape_string($conn, $Label));
+            $Family = htmlspecialchars(mysqli_real_escape_string($conn, $Family));
+            $Genus = htmlspecialchars(mysqli_real_escape_string($conn, $Genus));
+            $Food = htmlspecialchars(mysqli_real_escape_string($conn, $Food));
+            $Season = htmlspecialchars(mysqli_real_escape_string($conn, $Season));
+            $Status = htmlspecialchars(mysqli_real_escape_string($conn, $Status));
+            $Habitat = htmlspecialchars(mysqli_real_escape_string($conn, $Habitat));
+            $Note = htmlspecialchars(mysqli_real_escape_string($conn, $Note));
             // 新增資料
             $sql = "INSERT INTO `library` (`organismname`, `label`, `family`, `genus`, `food`, `season`, `status`, `habitat`, `note`) VALUES ('$Organ', '$Label', '$Family', '$Genus', '$Food', '$Season', '$Status', '$Habitat', '$Note')";
 
@@ -123,17 +141,17 @@
         global $conn;
 
         $id = (int)$id;
-        $Organ = mysqli_real_escape_string($conn,$Organ);
-        $Label = mysqli_real_escape_string($conn,$Label);
-        $Family = mysqli_real_escape_string($conn,$Family);
-        $Genus = mysqli_real_escape_string($conn,$Genus);
-        $Food = mysqli_real_escape_string($conn,$Food);
-        $Season = mysqli_real_escape_string($conn,$Season);
-        $Status = mysqli_real_escape_string($conn,$Status);
-        $Habitat = mysqli_real_escape_string($conn,$Habitat);
-        $Note = mysqli_real_escape_string($conn,$Note);
+        $Organ = htmlspecialchars(mysqli_real_escape_string($conn, $Organ));
+        $Label = htmlspecialchars(mysqli_real_escape_string($conn, $Label));
+        $Family = htmlspecialchars(mysqli_real_escape_string($conn, $Family));
+        $Genus = htmlspecialchars(mysqli_real_escape_string($conn, $Genus));
+        $Food = htmlspecialchars(mysqli_real_escape_string($conn, $Food));
+        $Season = htmlspecialchars(mysqli_real_escape_string($conn, $Season));
+        $Status = htmlspecialchars(mysqli_real_escape_string($conn, $Status));
+        $Habitat = htmlspecialchars(mysqli_real_escape_string($conn, $Habitat));
+        $Note = htmlspecialchars(mysqli_real_escape_string($conn, $Note));
 
-        // 生物名稱及編號不得為空
+        // 生物名稱及編號不得為空
         if (!empty($Organ) && !empty($id)) {
 
             $sql = "UPDATE `library` SET `organismname`='$Organ',`label`='$Label',`family`='$Family',`genus`='$Genus',`food`='$Food',`season`='$Season',`status`='$Status',`habitat`='$Habitat',`note`='$Note' where `id`=$id;";

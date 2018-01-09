@@ -79,6 +79,7 @@
 							<div class="card-text">拍攝日期: {{ list.shootdatetime }}</div>
 							<div class="text-left text-md-right mt-1">
 									<a :href="'photoedit.php?id=' + list.id" class="btn btn-primary">修改</a>
+									<a @click.prevent="checkDel(list.id)" href="#" class="btn btn-danger">刪除</a>
 							</div>
 					</div>
 				</div>
@@ -155,6 +156,12 @@
           return true;
         }else{
           return false;
+        }
+      },
+      checkDel(id) {
+        var str = '../Control/photoControl.php?act=delphoto&id=' + id;
+        if(confirm('確定要刪除嗎?')){
+          window.location.href = str;
         }
       },
 			changeStatus (id) {

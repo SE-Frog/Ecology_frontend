@@ -37,28 +37,17 @@
   echo " <div id=\"imageMeta\">";
   echo " <div class=\"exif-data\">";
   echo "<form class=\"mb-3\" method=\"post\" action=\"../Control/photoControl.php\">";
-  echo "<input type=\"hidden\" name=\"act\" value=\"updatePhoto\">";
+  echo "<input type=\"hidden\" name=\"act\" value=\"updateExif\">";
 ?>
     [<a href='../Views/photoview.php' class="mb-2">返回</a>]
     <br>
-    <!-- <b>圖片編號:</b><input class="form-control" type="text" name='photoid' id='photoid' value="<?php echo $photoid;?>"/><br> -->
-    <!-- <b>圖片名稱: </b><input class="form-control mb-2" name="name" type="text" id="name" value="<?php echo $name;?>" readonly='readonly'/>
-    <b>圖片路徑: </b><input class="form-control mb-2" name="path" type="text" id="path" value="<?php echo $path;?>" readonly='readonly'/> -->
     <input class="form-control" type="hidden" name='photoid' id='photoid' value="<?php echo $photoid;?>"/><br>
-    <input class="form-control mb-2" name="name" type="hidden" id="name" value="<?php echo $name;?>" readonly='readonly'/>
-    <input class="form-control mb-2" name="path" type="hidden" id="path" value="<?php echo $path;?>" readonly='readonly'/>
+    <!-- <input class="form-control mb-2" name="name" type="hidden" id="name" value="<?php echo $name;?>" readonly='readonly'/> -->
+    <!-- <input class="form-control mb-2" name="path" type="hidden" id="path" value="<?php echo $path;?>" readonly='readonly'/> -->
     <b>物種: </b><input class="form-control mb-2" name="directory" type="text" id="directory" value="<?php echo $directory;?>" readonly='readonly'/>
     <b>經度: </b><input class="form-control mb-2" name="longitude" type="text" id="longitude" value="<?php echo $longitude;?>" />
     <b>緯度: </b><input class="form-control mb-2" name="latitude" type="text" id="latitude" value="<?php echo $latitude;?>" />
     <b>拍攝日期: </b><input class="form-control mb-2" name="shootdatetime" type="text" id="shootdatetime" value="<?php echo $shootdatetime;?>" />
-    <div class="mb-2">
-      <b>
-        <label>更改圖片？
-          <input class="checkbox_check" name="overwrite" value="1" id="overwrite" type="checkbox" />
-        </label>
-      </b>
-      <b id="overwrite1"></b>
-    </div>
     <input type="submit" name="Submit" value="送出" />
 <?php
   echo "</form>";
@@ -72,20 +61,3 @@
 <?php
   include 'footer.php';
 ?>
-
-<script type="text/javascript">
-// console.log('1');
-$(document).ready(function () {
-  $("input[name='overwrite']").change(function () {
-    var $this = $(this);
-    if ( $this.prop('checked') ) {
-      var option = $(this).val();
-      $(this).parent().append("<input id='upload' class='form-control' name='exif[]' type='file' multiple='multiple' placeholder='可選擇多檔案上傳'/>");
-    } else {
-      if($("body").find("#upload")){
-        $('#upload').remove();
-      }
-    }
-  });
-});
-</script>
