@@ -6,11 +6,11 @@
   }
 ?>
 <div class="container">
-  <h1>Add User</h1><hr />
+  <h1>新增管理者</h1><hr />
   <form method="post" action="../Control/userControl.php">
     <input type="hidden" name="act" value="addUser">
-    User Name: <input type="username" name="username"><br />
-    Password : <input type="password" name="password"><br />
+    管理者帳號: <input type="username" name="username"><br />
+    管理者密碼: <input type="password" name="password"><br />
     <input type="submit">
   </form>
 </div>

@@ -12,12 +12,12 @@
     $results=getUserList();
     while (	$rs=mysqli_fetch_array($results)) {
       echo
-      "<br/><b>id:</b>",$rs['id'],
-      "<br/><b>name:</b>",$rs['username'],
-      "<br/><b>password:</b>",$rs['password'],
-      "<br/><a href='../Control/userControl.php?act=deleteUser&id=",$rs['id'],"'>delete</a>",
-      "&nbsp;&nbsp;&nbsp;<a href='../Views/userinfo_edit.php?id=",$rs['id'],"'>edit</a>",
-      "&nbsp;&nbsp;&nbsp;<a href='../Views/userinfo_add.php?'>add</a>",
+      "<br/><b>管理者編號:</b>",$rs['id'],
+      "<br/><b>管理者名單:</b>",$rs['username'],
+      "<br/><b>管理者密碼(未加密):</b>",$rs['password'],
+      "<br/><a href='../Control/userControl.php?act=deleteUser&id=",$rs['id'],"'>刪除</a>",
+      "&nbsp;&nbsp;&nbsp;<a href='../Views/userinfo_edit.php?id=",$rs['id'],"'>編輯</a>",
+      "&nbsp;&nbsp;&nbsp;<a href='../Views/userinfo_add.php?'>新增</a>",
       "<br/>";
     }
   ?>
