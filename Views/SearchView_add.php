@@ -15,7 +15,7 @@
 </head>
 <body>
   <div class="container mt-3">
-    <h2 class="mb-3">Add Ecology</h2>
+    <h2 class="mb-3">新增一筆生態資訊</h2>
     <form method="post" action="../Control/Control.php?act=createEcology">
       <div class="form-group row">
         <label for="organismname" class="col-md-2 col-form-label">生物名稱</label>
