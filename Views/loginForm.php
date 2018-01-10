@@ -29,10 +29,10 @@
     }
     form {
       width: 400px;
-      margin-top: 100px;
+      margin-top: 250px;
     }
     .form-group {
-      margin: 50px auto;
+      margin: 25px auto;
     }
   </style>
 </head>
@@ -50,7 +50,7 @@
             <span style="color:white;font-weight:bold;">Password</span>
             <input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
-          <button type="submit" class="btn btn-success" value="登入" >Login</button>
+          <button type="submit" class="btn btn-success" style="margin: 0px 0px 10px 0px" value="登入" >Login</button>
         </form>
       </div>
     </div>
