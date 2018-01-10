@@ -6,8 +6,7 @@
   }
 ?>
 <div class="container">
-  <h1>登錄成功！</h1>
-  <h2>這是主頁</h2>
+  <h1>登入成功頁面(視需求放公告欄或留言板)</h1>
 </div>
 <?php
   include 'footer.php';
